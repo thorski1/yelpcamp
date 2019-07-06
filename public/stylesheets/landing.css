@@ -1,0 +1,90 @@
+body {
+    background-color: #000;
+}
+
+#landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 40vh;
+}
+
+#landing-header h1 {
+    color: #fff;
+}
+
+.slideshow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow li { 
+    width: 100%;
+    height: 100%;
+    /* we don't want the image to move away from t/l corner*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    /* so images don't repeat vertically or horizontally and make it yucky*/
+    background-repeat: no-repeat;
+    /* opacity starts at 0 and uses animation to increase until 1*/
+    opacity: 0;
+    z-index: 0;
+    /* animation name is arb, 50s is time, linear=at same speed throughout */
+    animation: imageAnimation 50s linear infinite; 
+  }
+  
+  .slideshow li:nth-child(1) { 
+    background-image: url(https://images.unsplash.com/photo-1488215545351-57e673dc3789?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1023&q=80)  
+  }
+  .slideshow li:nth-child(2) { 
+    background-image: url(https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+    animation-delay: 8s; 
+  }
+  .slideshow li:nth-child(3) { 
+    background-image: url(https://images.unsplash.com/photo-1484862175261-080871e01911?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjI0MX0&auto=format&fit=crop&w=734&q=80);
+    animation-delay: 16s; 
+  }
+  .slideshow li:nth-child(4) { 
+    background-image: url(https://images.unsplash.com/photo-1413752362258-7af2a667b590?ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80);
+    animation-delay: 24s; 
+  }
+  .slideshow li:nth-child(5) { 
+    background-image: url(https://images.unsplash.com/photo-1500622944204-b135684e99fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80);
+    animation-delay: 32s; 
+  }
+  
+  /*remember that @ indicates when something should be applied ie when the image is loaded in the slideshow*/
+  @keyframes imageAnimation { 
+    0% { 
+      /*divides each images time into 3 sections, fade in, be visible, fade out. fade in & out of images occur at
+      the same time creating the cross-fade effect*/
+      opacity: 0; 
+      animation-timing-function: ease-in;
+    }
+    10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    20% {
+      opacity: 1
+    }
+    30% {
+      opacity: 0
+    }
+  }
+  
+  /* to support other/older browsers*/
+  .no-cssanimations .slideshow li {
+      opacity: 1;
+  }
+
